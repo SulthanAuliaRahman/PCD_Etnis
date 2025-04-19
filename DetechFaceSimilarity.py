@@ -6,7 +6,7 @@ import tempfile
 from deepface import DeepFace
 
 
-def verify(img1_path,img2_path,model_name = "VGG-Face"):
+def verify(img1_path,img2_path,model_name = "Facenet"):
   img1 = cv.imread(img1_path)
   img2 = cv.imread(img2_path)
 
@@ -55,6 +55,20 @@ def detech_similarity():
 
                     # Panggil fungsi verifikasi
                     konfirmasi = verify(img1_path, img2_path)
-                    st.write("Hasil Verifikasi:")
-                    st.write(konfirmasi)
+                    st.success("✅ Hasil Verifikasi Berhasil Didapatkan")
+
+                    # Ambil hasil utama
+                    verified = konfirmasi.get("verified", False)
+                    distance = konfirmasi.get("distance", 0.0)
+                    threshold = konfirmasi.get("threshold", 0.0)
+                    model_used = konfirmasi.get("model", "Unknown")
+
+                    # Tampilkan hasil secara terformat
+                    st.markdown(f"""
+                    **Model yang digunakan**: `{model_used}`  
+                    **Similarity Distance**: `{distance:.4f}`  
+                    **Threshold**: `{threshold:.4f}`  
+                    **Verifikasi Wajah**: {"✅ Sama" if verified else "❌ Tidak Sama"}
+                    """)
+
 

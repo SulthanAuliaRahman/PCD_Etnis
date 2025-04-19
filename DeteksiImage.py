@@ -27,7 +27,7 @@ def detect_eth():
     size = 280
 
     # Label dari class_indices(urutan harus sesuai training)
-    class_labels = ['Asian','Jawa', 'Minang', 'Sunda'] 
+    class_labels = ['Jawa', 'Minang', 'Sunda'] 
 
 
     st.title("Deteksi Etnis Wajah")
