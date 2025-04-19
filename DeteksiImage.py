@@ -23,7 +23,7 @@ def detect_eth():
     mtcnn = MTCNN(keep_all=True, device=device)
 
     # Load model 
-    model = load_model("Model/best_model.keras")
+    model = load_model("best_model.keras")
     size = 280
 
     # Label dari class_indices(urutan harus sesuai training)
